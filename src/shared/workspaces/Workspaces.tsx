@@ -1,12 +1,9 @@
-import React from 'react';
-import Gavel from '@material-ui/icons/Gavel';
-
 type Id = string;
 type TypeId = Id;
 type SlotId = Id;
 type WorkspaceId = Id;
 
-type ItemPicture = () => React.ReactElement;
+type ItemPictureId = 'hammer' | 'wrench';
 
 interface ISlotInfo {
   allowedTypes: TypeId[];
@@ -18,7 +15,7 @@ interface ISlotInfo {
 
 interface IItemType {
   description: string;
-  pic: ItemPicture;
+  pictureId: ItemPictureId;
 }
 
 interface IWorkspaceDescription {
@@ -36,14 +33,14 @@ const workspaces: IWorkspaceDescription = {
   garage: {
     slots: {
       '0': {
-        allowedTypes: ['0'],
+        allowedTypes: ['0', '1'],
         translation: {
           x: '531px',
           y: '314px',
         },
       },
       '1': {
-        allowedTypes: ['0'],
+        allowedTypes: ['0', '1'],
         translation: {
           x: '411px',
           y: '724px',
@@ -53,7 +50,11 @@ const workspaces: IWorkspaceDescription = {
     types: {
       '0': {
         description: 'Hammer',
-        pic: () => <Gavel style={{ width: '100%', height: '100%' }} />,
+        pictureId: 'hammer',
+      },
+      '1': {
+        description: 'Wrench',
+        pictureId: 'wrench',
       },
     },
   },
